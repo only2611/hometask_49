@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block nav %}
+
+{#    <li class="nav-item">#}
+{#        <a class="nav-link" href="{% url "create" %}"><h3>Создание записи</h3></a>#}
+{#    </li>#}
+
+{% endblock %}
+{% block content %}
+    <h2>Задачи</h2>
+    <div class="row">
+        {% for note in notes %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h3>{{ note.summary }} ({{ note.description}})</h3>
+{#                        <p>{{ note.text_write }}</p>#}
+{#                        <a class="btn btn btn-primary" href="{% url "update_note" pk=note.pk %}" role="button"><i class="fa fa-pencil"></i> Редактировать</a>#}
+{#                        <a class="btn btn btn-primary" href="{% url "delete" pk=note.pk %}" role="button"><i class="fa fa-trash"></i> Удалить</a>#}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <p></p>
+{% endblock %}
