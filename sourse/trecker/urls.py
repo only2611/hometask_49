@@ -1,10 +1,12 @@
 from django.urls import path
 
-from trecker.views import index_view
+
+
+from trecker.views import IndexView, TaskView
 
 urlpatterns = [
-    path("", index_view, name="index_view"),
-
+    path('', IndexView.as_view(), name="index_view"),
+    path('task/<int:pk>/', TaskView.as_view(), name="task_view"),
 
 ]
 

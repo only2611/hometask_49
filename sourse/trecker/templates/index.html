@@ -15,9 +15,9 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <h3>{{ note.summary }} ({{ note.description}})</h3>
-{#                        <p>{{ note.text_write }}</p>#}
+                        <p><a href="{% url "task_view" note.pk %}">Подробнее о задаче</a></p>
 {#                        <a class="btn btn btn-primary" href="{% url "update_note" pk=note.pk %}" role="button"><i class="fa fa-pencil"></i> Редактировать</a>#}
-{#                        <a class="btn btn btn-primary" href="{% url "delete" pk=note.pk %}" role="button"><i class="fa fa-trash"></i> Удалить</a>#}
+{#                      <a class="btn btn btn-primary" href="{% url "delete" pk=note.pk %}" role="button"><i class="fa fa-trash"></i> Удалить</a>#}
                     </div>
                 </div>
             </div>
