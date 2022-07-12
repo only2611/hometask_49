@@ -78,10 +78,16 @@ class Update(View):
         return render(request, "update.html", {"form": form})
 
 
-# def delete(request, pk):
-#     note = get_object_or_404(Task, pk=pk)
-#     if request.method == "GET":
-#         return render(request, "delete.html", {"note": note})
-#     else:
-#         note.delete()
-#         return redirect("index_view")
+
+class Delete(View):
+    def dispatch(self, request, *args, **kwargs):
+        pk = kwargs.get("pk")
+        self.task = get_object_or_404(Task, pk=pk)
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        if request.method == "GET":
+            return render(request, "delete.html", {"task": self.task})
+    def post(self, request, *args, **kwargs):
+            self.task.delete()
+            return redirect("index_view")
