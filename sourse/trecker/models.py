@@ -14,7 +14,8 @@ class Task(BaseModel):
     summary = models.CharField(max_length=30, null=False, blank=False, verbose_name="Заголовок")
     description = models.CharField(max_length=500, null=True, blank=True, verbose_name="Описание задачи")
     status = models.ForeignKey("trecker.Status", on_delete=models.PROTECT, related_name="statuses", verbose_name="Статус")
-    type = models.ForeignKey("trecker.Type", on_delete=models.PROTECT, related_name="types", verbose_name="Тип")
+
+    types = models.ManyToManyField("trecker.Type", related_name="tasks", blank=True)
 
 
     def __str__(self):
@@ -38,6 +39,7 @@ class Status(models.Model):
         verbose_name = "Статус"
         verbose_name_plural = "Статусы"
 
+
 class Type(models.Model):
     name = models.CharField(max_length=30, null=False, blank=False, verbose_name="Тип")
 
@@ -48,3 +50,4 @@ class Type(models.Model):
         db_table = "types"
         verbose_name = "Тип"
         verbose_name_plural = "Типы"
+

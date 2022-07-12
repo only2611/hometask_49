@@ -4,7 +4,7 @@
 {% block content %}
 <form action="" method="post">
 {% csrf_token %}
-<h2>Are you sure to delete note "{{ note.name_author }}"?</h2>
+<h2>Are you sure to delete task "{{ task.summary }}"?</h2>
 <button class="btn btn btn-primary mb-3"  type="submit"><i class="fa fa-trash"></i> YES</button>
 </form>
     <a class="btn btn btn-primary" href="{% url "index_view" %}" role="button">NO</a>

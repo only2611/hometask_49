@@ -9,7 +9,7 @@ class TaskAdmin(admin.ModelAdmin):
     list_display_links = ['summary']
     list_filter = ['status']
     search_fields = ['summary', 'status']
-    fields = ['summary', 'description', 'status', 'type', 'created_at', 'updated_at',]
+    fields = ['summary', 'description', 'status', 'types', 'created_at', 'updated_at',]
     readonly_fields = ['created_at', 'updated_at']
 
 admin.site.register(Task, TaskAdmin)
@@ -29,7 +29,6 @@ class TypeAdmin(admin.ModelAdmin):
     list_filter = ['name']
     search_fields = ['name']
     fields = ['name',]
-
 
 
 admin.site.register(Type, TypeAdmin)
