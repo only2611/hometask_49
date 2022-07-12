@@ -247,6 +247,19 @@
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2022-07-10T09:59:34.778Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "6",
+        "object_repr": "6.risk management - sds",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -733,10 +746,10 @@
     "pk": 6,
     "fields": {
         "created_at": "2022-07-08T11:51:59.690Z",
-        "updated_at": "2022-07-08T11:51:59.690Z",
+        "updated_at": "2022-07-10T09:59:34.778Z",
         "summary": "risk management",
         "description": "sds",
-        "status": 6,
+        "status": 5,
         "type": 3
     }
 },
