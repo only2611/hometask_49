@@ -42,11 +42,12 @@ class CreateView(View):
     def post(self, request):
             form = TaskForm(data=request.POST)
             if form.is_valid():
+                types = form.cleaned_data.get("types")
                 summary = form.cleaned_data.get("summary")
                 description = form.cleaned_data.get("description")
                 status = form.cleaned_data.get("status")
-                type = form.cleaned_data.get("type")
-                new_task = Task.objects.create(summary=summary, description=description, status=status, type=type)
+                new_task = Task.objects.create(summary=summary, description=description, status=status,)
+                new_task.types.set(types)
                 return redirect("index_view", )
             return render(request, "create.html", {"form": form})
 
@@ -63,7 +64,7 @@ class Update(View):
                 "summary": self.task.summary,
                 "description": self.task.description,
                 "status": self.task.status,
-                "type": self.task.type,
+                "types": self.task.types.all(),
             })
             return render(request, "update.html", {"form": form})
     def post(self, request, *args, **kwargs):
@@ -72,7 +73,7 @@ class Update(View):
             self.task.summary = form.cleaned_data.get("summary")
             self.task.description = form.cleaned_data.get("description")
             self.task.status = form.cleaned_data.get("status")
-            self.task.type = form.cleaned_data.get("type")
+            self.task.types.set(form.cleaned_data.get("types"))
             self.task.save()
             return redirect("index_view", )
         return render(request, "update.html", {"form": form})

@@ -8,7 +8,12 @@
 <p>name - {{ task.summary }}</p>
 <p>status - {{ task.status }}</p>
 <p>description - {{ task.description }}</p>
-<p>type - {{ task.type }}</p>
+<p><h3>types:</h3>
+    {% for type in task.types.all %}
+        <h4>{{ type.name }}</h4>
+    {% endfor %}
+
+</p>
     <p>data_of_create - {{ task.created_at }}</p>
     <p>data_of_update - {{ task.updated_at }}</p>
 

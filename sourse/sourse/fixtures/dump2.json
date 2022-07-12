@@ -1,0 +1,171 @@
+[
+{
+    "model": "trecker.task",
+    "pk": 1,
+    "fields": {
+        "created_at": "2022-07-12T11:58:25.364Z",
+        "updated_at": "2022-07-12T12:40:23.935Z",
+        "summary": "apple",
+        "description": "most lovely",
+        "status": 2,
+        "types": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 2,
+    "fields": {
+        "created_at": "2022-07-12T11:58:52.748Z",
+        "updated_at": "2022-07-12T11:58:52.748Z",
+        "summary": "aaaaa",
+        "description": "framework",
+        "status": 2,
+        "types": [
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 3,
+    "fields": {
+        "created_at": "2022-07-12T11:59:10.624Z",
+        "updated_at": "2022-07-12T11:59:10.624Z",
+        "summary": "electronic",
+        "description": "test",
+        "status": 3,
+        "types": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 4,
+    "fields": {
+        "created_at": "2022-07-12T12:06:46.563Z",
+        "updated_at": "2022-07-12T12:06:46.563Z",
+        "summary": "apple",
+        "description": "ewdewf",
+        "status": 2,
+        "types": []
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 5,
+    "fields": {
+        "created_at": "2022-07-12T12:09:10.624Z",
+        "updated_at": "2022-07-12T12:10:05.374Z",
+        "summary": "football",
+        "description": "is",
+        "status": 2,
+        "types": [
+            1
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 6,
+    "fields": {
+        "created_at": "2022-07-12T12:13:17.477Z",
+        "updated_at": "2022-07-12T12:13:17.477Z",
+        "summary": "12",
+        "description": "1",
+        "status": 1,
+        "types": []
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 8,
+    "fields": {
+        "created_at": "2022-07-12T12:22:43.347Z",
+        "updated_at": "2022-07-12T12:22:43.347Z",
+        "summary": "cars",
+        "description": "asads",
+        "status": 2,
+        "types": []
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 10,
+    "fields": {
+        "created_at": "2022-07-12T12:30:06.555Z",
+        "updated_at": "2022-07-12T12:30:06.555Z",
+        "summary": "electronicarts",
+        "description": "name",
+        "status": 1,
+        "types": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 11,
+    "fields": {
+        "created_at": "2022-07-12T12:37:54.585Z",
+        "updated_at": "2022-07-12T12:37:54.585Z",
+        "summary": "name1",
+        "description": "name1",
+        "status": 1,
+        "types": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.status",
+    "pk": 1,
+    "fields": {
+        "name": "new"
+    }
+},
+{
+    "model": "trecker.status",
+    "pk": 2,
+    "fields": {
+        "name": "in progress"
+    }
+},
+{
+    "model": "trecker.status",
+    "pk": 3,
+    "fields": {
+        "name": "done"
+    }
+},
+{
+    "model": "trecker.type",
+    "pk": 1,
+    "fields": {
+        "name": "bug"
+    }
+},
+{
+    "model": "trecker.type",
+    "pk": 2,
+    "fields": {
+        "name": "Enhancement"
+    }
+},
+{
+    "model": "trecker.type",
+    "pk": 3,
+    "fields": {
+        "name": "task"
+    }
+}
+]
