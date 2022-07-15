@@ -30,8 +30,8 @@ class TaskForm(forms.ModelForm):
         }
 
 
-    def clean_summary(self):
-        summary = self.cleaned_data.get("summary")
-        if len(summary) < 5:
-            raise ValidationError("Заголовок должен быть больше 5 символов")
-        return summary
+
+    def clean(self):
+        if self.cleaned_data.get("summary") == self.cleaned_data.get("description"):
+            raise ValidationError("Заголовок и описание не могут иметь одинаковые значения")
+        return super().clean()

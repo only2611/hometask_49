@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+from trecker.validate import summary_max_10_len
+
 
 class BaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
@@ -11,7 +13,7 @@ class BaseModel(models.Model):
 
 
 class Task(BaseModel):
-    summary = models.CharField(max_length=30, null=False, blank=False, verbose_name="Заголовок")
+    summary = models.CharField(max_length=30, null=False, blank=False, verbose_name="Заголовок", validators=[summary_max_10_len])
     description = models.TextField(max_length=500, null=True, blank=True, verbose_name="Описание задачи")
     status = models.ForeignKey("trecker.Status", on_delete=models.PROTECT, related_name="statuses", verbose_name="Статус")
 
