@@ -31,7 +31,7 @@ class TaskForm(forms.ModelForm):
 
 
 
-    def clean(self):
-        if self.cleaned_data.get("summary") == self.cleaned_data.get("description"):
-            raise ValidationError("Заголовок и описание не могут иметь одинаковые значения")
-        return super().clean()
+    # def clean(self):
+    #     if self.cleaned_data.get("summary") == self.cleaned_data.get("description"):
+    #         raise ValidationError("Заголовок и описание не могут иметь одинаковые значения")
+    #     return super().clean()

@@ -1,0 +1,47 @@
+Статусы к запросу: new, in progress, done 
+Типы к запросу: bug, Enhancement, task
+
+from trecker.models import Task, Status, Type
+from django.db.models import Q, F
+
+Запрос номер 1
+from django.utils import timezone
+from datetime import timedelta 
+Task.objects.filter(created_at__gte=(timezone.now()-timedelta(days=30)), status__name='done')
+
+
+
+
+Запрос номер 2
+Task.objects.filter(status__name__in=("new", "in progress"), types__name__in=('bug', 'task')).distinct()
+
+
+
+
+Запрос номер 3
+from django.db.models import Q
+
+q1 = Q(summary__icontains='BUG')
+q2= Q(types__name="bug")
+q3= Q(status__name__in=("new", "in progress"))
+Task.objects.filter((q1 | q2), q3).distinct()
+
+
+
+Бонус 1
+Task.objects.values('id', 'summary', 'types__name', 'status__name').distinct()
+
+
+
+
+Бонус 2
+from django.db.models import F
+Task.objects.filter(summary=F("description"))
+
+
+
+Бонус 3
+from django.db.models import Count
+a = Task.objects.annotate(count = Count("types__id"))
+for n in a:
+n.count
