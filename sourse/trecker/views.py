@@ -4,20 +4,36 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
 from trecker.forms import TaskForm
 from trecker.models import Task
 
-class IndexView(TemplateView):
+
+
+class IndexView(ListView):
+    model = Task
     template_name = "index.html"
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tasks'] = Task.objects.all()
-        return context
+    context_object_name = "tasks"
+    ordering = ("-updated_at")
+    paginate_by = 5
 
 
-# class IndexView(View):
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        print(context)
+        return(context)
+
+
+# class IndexView(TemplateView):
+#     template_name = "index.html"
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['tasks'] = Task.objects.all()
+#         return context
+
+
+# class IndexView(ListView):
 #     def get(self,request):
 #         notes = Task.objects.all()
 #         context = {"notes": notes}
