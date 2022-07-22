@@ -1,12 +1,11 @@
-
-
-
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.http import urlencode
 
 from django.views import View
 from django.views.generic import TemplateView, ListView
 
-from trecker.forms import TaskForm
+from trecker.forms import TaskForm, FindForm
 from trecker.models import Task
 
 
@@ -19,25 +18,37 @@ class IndexView(ListView):
     paginate_by = 5
 
 
+    def get(self, request, *args, **kwargs):
+        self.form = self.get_find_form()
+        self.search_value = self.get_find_value()
+        return super().get(request, *args, **kwargs)
+
+
+    def get_queryset(self):
+        if self.search_value:
+            return Task.objects.filter(Q(summary__icontains=self.search_value)|
+                                       (Q(description__icontains=self.search_value)))
+        return Task.objects.all()
+
+
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        print(context)
+        context['form'] = self.form
+        if self.search_value:
+            query = urlencode({'search': self.search_value})
+            context['query'] = query
+
         return(context)
 
 
-# class IndexView(TemplateView):
-#     template_name = "index.html"
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['tasks'] = Task.objects.all()
-#         return context
+    def get_find_form(self):
+        return FindForm(self.request.GET)
 
 
-# class IndexView(ListView):
-#     def get(self,request):
-#         notes = Task.objects.all()
-#         context = {"notes": notes}
-#         return render(request, "index.html", context, )
+    def get_find_value(self):
+        if self.form.is_valid():
+            return self.form.cleaned_data.get("search")
+
 
 class TaskView(TemplateView):
     template_name = "task.html"

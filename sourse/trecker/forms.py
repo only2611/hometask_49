@@ -35,3 +35,7 @@ class TaskForm(forms.ModelForm):
     #     if self.cleaned_data.get("summary") == self.cleaned_data.get("description"):
     #         raise ValidationError("Заголовок и описание не могут иметь одинаковые значения")
     #     return super().clean()
+
+
+class FindForm(forms.Form):
+    search = forms.CharField(max_length=50, required=False, label="Найти")
