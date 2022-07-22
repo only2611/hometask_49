@@ -37,7 +37,7 @@ class IndexView(ListView):
         if self.search_value:
             query = urlencode({'search': self.search_value})
             context['query'] = query
-
+            context['search'] = self.search_value
         return(context)
 
 

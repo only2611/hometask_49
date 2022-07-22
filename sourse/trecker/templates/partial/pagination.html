@@ -22,6 +22,12 @@
             <label for="page">
                 <input class="form-control" type="text" name="page" id="page" value="{{ page_obj.number }}">
             </label>
+            {% if search %}
+            <label >
+                <input class="form-control" hidden type="text" name="search" value="{{ search }}">
+            </label>
+            {%  endif %}
+        <button type="submit">GO!</button>
         </form>
     </li>
 
