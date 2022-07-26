@@ -12,7 +12,7 @@ from trecker.models import Task
 
 class IndexView(ListView):
     model = Task
-    template_name = "index.html"
+    template_name = "tasks/index.html"
     context_object_name = "tasks"
     ordering = ("-updated_at")
     paginate_by = 5
@@ -51,7 +51,7 @@ class IndexView(ListView):
 
 
 class TaskView(TemplateView):
-    template_name = "task.html"
+    template_name = "tasks/task.html"
 
     def get_context_data(self, **kwargs):
         pk = kwargs.get("pk")
@@ -65,7 +65,7 @@ class CreateView(View):
     def get(self, request, **kwargs):
         if request.method == "GET":
             form = TaskForm()
-            return render(request, "create.html", {"form": form})
+            return render(request, "tasks/create.html", {"form": form})
     def post(self, request):
             form = TaskForm(data=request.POST)
             if form.is_valid():
@@ -76,7 +76,7 @@ class CreateView(View):
                 new_task = Task.objects.create(summary=summary, description=description, status=status,)
                 new_task.types.set(types)
                 return redirect("index_view", )
-            return render(request, "create.html", {"form": form})
+            return render(request, "tasks/create.html", {"form": form})
 
 
 class Update(View):
@@ -93,7 +93,7 @@ class Update(View):
                 "status": self.task.status,
                 "types": self.task.types.all(),
             })
-            return render(request, "update.html", {"form": form})
+            return render(request, "tasks/update.html", {"form": form})
     def post(self, request, *args, **kwargs):
         form = TaskForm(data=request.POST)
         if form.is_valid():
@@ -103,7 +103,7 @@ class Update(View):
             self.task.types.set(form.cleaned_data.get("types"))
             self.task.save()
             return redirect("index_view", )
-        return render(request, "update.html", {"form": form})
+        return render(request, "tasks/update.html", {"form": form})
 
 
 
@@ -115,7 +115,7 @@ class Delete(View):
 
     def get(self, request, *args, **kwargs):
         if request.method == "GET":
-            return render(request, "delete.html", {"task": self.task})
+            return render(request, "tasks/delete.html", {"task": self.task})
     def post(self, request, *args, **kwargs):
             self.task.delete()
             return redirect("index_view")
