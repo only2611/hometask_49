@@ -2,7 +2,8 @@ from django.contrib import admin
 
 # Register your models here.
 
-from trecker.models import Task, Status, Type
+from trecker.models import Task, Status, Type, Project
+
 
 class TaskAdmin(admin.ModelAdmin):
     list_display = ['id','summary', 'description', 'status',]
@@ -33,3 +34,13 @@ class TypeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Type, TypeAdmin)
+
+
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ['id','name', 'start_date', 'finish_date']
+    list_display_links = ['name']
+    list_filter = ['name']
+    search_fields = ['name']
+    fields = ['name', 'description', 'start_date', 'finish_date']
+
+admin.site.register(Project, ProjectAdmin)

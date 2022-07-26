@@ -1,0 +1,321 @@
+[
+{
+    "model": "trecker.task",
+    "pk": 2,
+    "fields": {
+        "created_at": "2022-07-12T11:58:52.748Z",
+        "updated_at": "2022-07-12T12:48:35.641Z",
+        "summary": "aaaaa",
+        "description": "framework",
+        "status": 2,
+        "project": 1,
+        "types": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 3,
+    "fields": {
+        "created_at": "2022-07-12T11:59:10.624Z",
+        "updated_at": "2022-07-12T12:48:50.949Z",
+        "summary": "electronic",
+        "description": "test22",
+        "status": 2,
+        "project": 1,
+        "types": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 4,
+    "fields": {
+        "created_at": "2022-07-12T12:06:46.563Z",
+        "updated_at": "2022-07-18T16:41:37.688Z",
+        "summary": "apple",
+        "description": "ewdewf",
+        "status": 3,
+        "project": 1,
+        "types": [
+            2
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 5,
+    "fields": {
+        "created_at": "2022-07-12T12:09:10.624Z",
+        "updated_at": "2022-07-12T12:10:05.374Z",
+        "summary": "football",
+        "description": "is",
+        "status": 2,
+        "project": 1,
+        "types": [
+            1
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 6,
+    "fields": {
+        "created_at": "2022-07-12T12:13:17.477Z",
+        "updated_at": "2022-07-12T12:45:37.266Z",
+        "summary": "12",
+        "description": "1",
+        "status": 1,
+        "project": 1,
+        "types": [
+            1
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 8,
+    "fields": {
+        "created_at": "2022-07-12T12:22:43.347Z",
+        "updated_at": "2022-07-18T16:41:27.602Z",
+        "summary": "cars",
+        "description": "asads",
+        "status": 1,
+        "project": 1,
+        "types": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 10,
+    "fields": {
+        "created_at": "2022-07-12T12:30:06.555Z",
+        "updated_at": "2022-07-18T16:42:04.725Z",
+        "summary": "electro",
+        "description": "name",
+        "status": 3,
+        "project": 1,
+        "types": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 19,
+    "fields": {
+        "created_at": "2022-07-15T10:07:48.437Z",
+        "updated_at": "2022-07-19T09:31:31.660Z",
+        "summary": "Bomba",
+        "description": "",
+        "status": 1,
+        "project": 1,
+        "types": []
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 20,
+    "fields": {
+        "created_at": "2022-07-18T16:04:24.599Z",
+        "updated_at": "2022-07-18T19:30:43.016Z",
+        "summary": "mostwanted",
+        "description": "need for speed",
+        "status": 3,
+        "project": 1,
+        "types": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 21,
+    "fields": {
+        "created_at": "2022-07-18T16:32:26.124Z",
+        "updated_at": "2022-07-18T16:32:26.124Z",
+        "summary": "PSG",
+        "description": "PSG",
+        "status": 2,
+        "project": 1,
+        "types": [
+            2
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 22,
+    "fields": {
+        "created_at": "2022-07-18T16:32:50.186Z",
+        "updated_at": "2022-07-18T16:32:50.186Z",
+        "summary": "copa",
+        "description": "copa",
+        "status": 1,
+        "project": 1,
+        "types": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 23,
+    "fields": {
+        "created_at": "2022-07-18T16:38:50.069Z",
+        "updated_at": "2022-07-18T16:38:50.069Z",
+        "summary": "bug",
+        "description": "lolipop",
+        "status": 1,
+        "project": 1,
+        "types": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 24,
+    "fields": {
+        "created_at": "2022-07-18T16:39:20.521Z",
+        "updated_at": "2022-07-18T19:28:29.972Z",
+        "summary": "Bug",
+        "description": "prime work",
+        "status": 3,
+        "project": 1,
+        "types": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 25,
+    "fields": {
+        "created_at": "2022-07-18T16:40:02.941Z",
+        "updated_at": "2022-07-18T16:40:02.941Z",
+        "summary": "bug lite",
+        "description": "boom boom",
+        "status": 2,
+        "project": 1,
+        "types": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 26,
+    "fields": {
+        "created_at": "2022-07-22T10:54:43.784Z",
+        "updated_at": "2022-07-22T10:54:43.784Z",
+        "summary": "xiaomi",
+        "description": "miui",
+        "status": 1,
+        "project": 1,
+        "types": [
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 27,
+    "fields": {
+        "created_at": "2022-07-26T07:31:28.264Z",
+        "updated_at": "2022-07-26T07:31:28.264Z",
+        "summary": "25-07",
+        "description": "monday",
+        "status": 1,
+        "project": 1,
+        "types": [
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.task",
+    "pk": 28,
+    "fields": {
+        "created_at": "2022-07-26T07:42:30.379Z",
+        "updated_at": "2022-07-26T07:42:30.379Z",
+        "summary": "26-07",
+        "description": "need to study",
+        "status": 2,
+        "project": 1,
+        "types": [
+            3
+        ]
+    }
+},
+{
+    "model": "trecker.status",
+    "pk": 1,
+    "fields": {
+        "name": "new"
+    }
+},
+{
+    "model": "trecker.status",
+    "pk": 2,
+    "fields": {
+        "name": "in progress"
+    }
+},
+{
+    "model": "trecker.status",
+    "pk": 3,
+    "fields": {
+        "name": "done"
+    }
+},
+{
+    "model": "trecker.type",
+    "pk": 1,
+    "fields": {
+        "name": "bug"
+    }
+},
+{
+    "model": "trecker.type",
+    "pk": 2,
+    "fields": {
+        "name": "Enhancement"
+    }
+},
+{
+    "model": "trecker.type",
+    "pk": 3,
+    "fields": {
+        "name": "task"
+    }
+},
+{
+    "model": "trecker.project",
+    "pk": 1,
+    "fields": {
+        "name": "First",
+        "description": "first project",
+        "start_date": "2022-07-25",
+        "finish_date": null
+    }
+}
+]
