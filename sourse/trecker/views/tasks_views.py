@@ -66,16 +66,14 @@ class CreateTaskView(CreateView):
     template_name = "tasks/create.html"
 
 
-    def form_valid(self, form):
-        task = get_object_or_404(Project, pk=self.kwargs.get("pk"))
-        form.instance.task = task
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    #     task = get_object_or_404(Task, pk=self.kwargs.get("pk"))
+    #     form.instance.task = task
+    #     return super().form_valid(form)
 
 
     def get_success_url(self):
-        return reverse("project-view", kwargs={"pk": self.object.project.pk})
-
-
+        return reverse("index_view")
 
 
 class Update(View):
@@ -91,6 +89,7 @@ class Update(View):
                 "description": self.task.description,
                 "status": self.task.status,
                 "types": self.task.types.all(),
+                "project": self.task.project
             })
             return render(request, "tasks/update.html", {"form": form})
     def post(self, request, *args, **kwargs):
@@ -100,6 +99,7 @@ class Update(View):
             self.task.description = form.cleaned_data.get("description")
             self.task.status = form.cleaned_data.get("status")
             self.task.types.set(form.cleaned_data.get("types"))
+            self.task.project = form.cleaned_data.get("project")
             self.task.save()
             return redirect("index_view", )
         return render(request, "tasks/update.html", {"form": form})

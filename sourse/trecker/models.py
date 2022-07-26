@@ -63,10 +63,10 @@ class Project(models.Model):
     finish_date = models.DateField(null=True, blank=True, verbose_name="Дата завершения")
 
     def __str__(self):
-        return f"{self.id}.{self.name} - {self.description} - {self.start_date}"
+        return f"{self.name}"
 
     class Meta:
         db_table = "projects"
-        verbose_name = "проект"
-        verbose_name_plural = "проекты"
+        verbose_name = "Проект"
+        verbose_name_plural = "Проекты"
 

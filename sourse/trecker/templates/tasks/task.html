@@ -5,7 +5,7 @@
     <a class="nav-link" href="{% url "delete" task.pk %}">Delete</a>
 {% endblock %}
 {% block content %}
-<p>project - {{ task.project.id}}.{{ task.project.name }}</p>
+<p>project - {{ task.project.name }}</p>
 <p>name - {{ task.summary }}</p>
 <p>status - {{ task.status }}</p>
 <p>description - {{ task.description }}</p>

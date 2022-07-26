@@ -1,5 +1,5 @@
 from django.urls import reverse
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 
 from trecker.forms import ProjectForm
 from trecker.models import Project
@@ -19,4 +19,11 @@ class CreateProjectView(CreateView):
 
     def get_success_url(self):
         return reverse("p-view")
+
+
+class ProjectView(DetailView):
+    template_name = "projects/project.html"
+    model = Project
+
+
 

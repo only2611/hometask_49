@@ -50,21 +50,6 @@
 },
 {
     "model": "trecker.task",
-    "pk": 5,
-    "fields": {
-        "created_at": "2022-07-12T12:09:10.624Z",
-        "updated_at": "2022-07-12T12:10:05.374Z",
-        "summary": "football",
-        "description": "is",
-        "status": 2,
-        "project": 1,
-        "types": [
-            1
-        ]
-    }
-},
-{
-    "model": "trecker.task",
     "pk": 6,
     "fields": {
         "created_at": "2022-07-12T12:13:17.477Z",
@@ -315,6 +300,66 @@
         "name": "First",
         "description": "first project",
         "start_date": "2022-07-25",
+        "finish_date": null
+    }
+},
+{
+    "model": "trecker.project",
+    "pk": 2,
+    "fields": {
+        "name": "Second",
+        "description": "Second",
+        "start_date": "2022-07-10",
+        "finish_date": null
+    }
+},
+{
+    "model": "trecker.project",
+    "pk": 3,
+    "fields": {
+        "name": "Third",
+        "description": "Third",
+        "start_date": "2022-01-01",
+        "finish_date": "2022-01-02"
+    }
+},
+{
+    "model": "trecker.project",
+    "pk": 4,
+    "fields": {
+        "name": "Fourth",
+        "description": "Fourth",
+        "start_date": "2022-05-01",
+        "finish_date": null
+    }
+},
+{
+    "model": "trecker.project",
+    "pk": 5,
+    "fields": {
+        "name": "Fifth",
+        "description": "Fifth",
+        "start_date": "2020-01-01",
+        "finish_date": null
+    }
+},
+{
+    "model": "trecker.project",
+    "pk": 6,
+    "fields": {
+        "name": "Sixth",
+        "description": "Sixth",
+        "start_date": "2021-11-06",
+        "finish_date": null
+    }
+},
+{
+    "model": "trecker.project",
+    "pk": 7,
+    "fields": {
+        "name": "Seventh",
+        "description": "Seventh",
+        "start_date": "2022-01-05",
         "finish_date": null
     }
 }

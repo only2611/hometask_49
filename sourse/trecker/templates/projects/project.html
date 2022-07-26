@@ -1,21 +1,27 @@
 {% extends "base.html" %}
+{% load static %}
 {% block nav %}
-    <a class="nav-link" href="{% url "create" %}">Create task</a>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url "create" %}"><h3>Создание задачи</h3></a>
+    </li>
 {% endblock %}
 {% block content %}
-<p>project - {{ task.project.id}}.{{ task.project.name }}</p>
-<p>name - {{ task.summary }}</p>
-<p>status - {{ task.status }}</p>
-<p>description - {{ task.description }}</p>
-
-<p><h3>types:</h3>
-    {% for type in task.types.all %}
-        <h4>{{ type.name }}</h4>
-    {% endfor %}
-
-</p>
-    <p>data_of_create - {{ task.created_at }}</p>
-    <p>data_of_update - {{ task.updated_at }}</p>
-
-<a href="{% url "index_view" %}">На главную</a>
+{#    {% include "partial/search.html" %}#}
+    <h2>Задачи</h2>
+    <div class="row">
+        {% for task in tasks %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h3>{{ task.summary }} ({{ task.description}})</h3>
+                        <p><a href="{% url "task_view" task.pk%}">Подробнее о задаче</a></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% if is_paginated %}
+        {% include "partial/pagination.html" %}
+    {% endif %}
+    </div>
+    <p></p>
 {% endblock %}
