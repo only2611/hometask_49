@@ -1,13 +1,13 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.utils.http import urlencode
 
 from django.views import View
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, CreateView
 
 from trecker.forms import TaskForm, FindForm
-from trecker.models import Task
-
+from trecker.models import Task, Project
 
 
 class IndexView(ListView):
@@ -60,23 +60,22 @@ class TaskView(TemplateView):
         return super().get_context_data(**kwargs)
 
 
+class CreateTaskView(CreateView):
+    model = Task
+    form_class = TaskForm
+    template_name = "tasks/create.html"
 
-class CreateView(View):
-    def get(self, request, **kwargs):
-        if request.method == "GET":
-            form = TaskForm()
-            return render(request, "tasks/create.html", {"form": form})
-    def post(self, request):
-            form = TaskForm(data=request.POST)
-            if form.is_valid():
-                types = form.cleaned_data.get("types")
-                summary = form.cleaned_data.get("summary")
-                description = form.cleaned_data.get("description")
-                status = form.cleaned_data.get("status")
-                new_task = Task.objects.create(summary=summary, description=description, status=status,)
-                new_task.types.set(types)
-                return redirect("index_view", )
-            return render(request, "tasks/create.html", {"form": form})
+
+    def form_valid(self, form):
+        task = get_object_or_404(Project, pk=self.kwargs.get("pk"))
+        form.instance.task = task
+        return super().form_valid(form)
+
+
+    def get_success_url(self):
+        return reverse("project-view", kwargs={"pk": self.object.project.pk})
+
+
 
 
 class Update(View):

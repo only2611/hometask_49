@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.forms import widgets
 
-from trecker.models import Type, Status, Task
+from trecker.models import Type, Status, Task, Project
 
 FAVORITE_TYPES_CHOICES = [
     ('task', 'Task'),
@@ -39,3 +39,9 @@ class TaskForm(forms.ModelForm):
 
 class FindForm(forms.Form):
     search = forms.CharField(max_length=50, required=False, label="Найти")
+
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['name', 'description', 'start_date', 'finish_date']
