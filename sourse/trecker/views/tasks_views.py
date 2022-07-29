@@ -1,10 +1,10 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
 
-from django.views import View
-from django.views.generic import TemplateView, ListView, CreateView, UpdateView
+
+from django.views.generic import TemplateView, ListView, CreateView, UpdateView, DeleteView
 
 from trecker.forms import TaskForm, FindForm
 from trecker.models import Task, Project
@@ -72,7 +72,9 @@ class CreateTaskView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse("project-view", kwargs={"pk": self.object.project.pk})
+       print(self.object)
+       return reverse("project-view", kwargs={"pk": self.object.project.pk})
+
 
 
 class UpdateTask(UpdateView):
@@ -86,16 +88,17 @@ class UpdateTask(UpdateView):
 
 
 
-
-class Delete(View):
-    def dispatch(self, request, *args, **kwargs):
-        pk = kwargs.get("pk")
-        self.task = get_object_or_404(Task, pk=pk)
-        return super().dispatch(request, *args, **kwargs)
+class DeleteTask(DeleteView):
+    model = Task
+    template_name = "tasks/delete.html"
 
     def get(self, request, *args, **kwargs):
-        if request.method == "GET":
-            return render(request, "tasks/delete.html", {"task": self.task})
-    def post(self, request, *args, **kwargs):
-            self.task.delete()
-            return redirect("index_view")
+        return super().delete(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse("project-view", kwargs={"pk": self.object.project.pk})
+
+
+
+
+

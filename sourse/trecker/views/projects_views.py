@@ -1,7 +1,7 @@
 from django.db.models import Q
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
-from django.views.generic import CreateView, ListView, DetailView, UpdateView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
 from trecker.forms import ProjectForm, FindForm
 from trecker.models import Project
@@ -69,3 +69,7 @@ class UpdateProject(UpdateView):
         return reverse("project-view", kwargs={"pk": self.object.pk})
 
 
+class DeleteProject(DeleteView):
+    model = Project
+    template_name = "projects/delete.html"
+    success_url = reverse_lazy("p-view")

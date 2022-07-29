@@ -3,9 +3,15 @@
 {% block nav %}
         <a class="nav-link" href="{% url "create" project.pk%}">Создать задачку</a>
         <a class="nav-link" href="{% url "p-update" project.pk %}">Редактировать проект</a>
+        <a class="nav-link" href="{% url "p-delete" project.pk %}">Удалить проект</a>
 {% endblock %}
 {% block content %}
+<p>project - {{ project.name }}</p>
+<p>description - {{ project.description }}</p>
+    <p>дата начала проекта - {{ project.start_date }}</p>
+    <p>дата завершения проекта - {{ project.finish_date }}</p>
 
+    <p></p>
 <p><h3>Задачи по проекту: {{project.name}}</h3>
     <div class="row">
         {% for project in project.taskss.all %}
