@@ -1,27 +1,25 @@
 {% extends "base.html" %}
 {% load static %}
 {% block nav %}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url "create" %}"><h3>Создание задачи</h3></a>
-    </li>
+        <a class="nav-link" href="{% url "create" project.pk%}">Создать задачку</a>
+        <a class="nav-link" href="{% url "p-update" project.pk %}">Редактировать проект</a>
 {% endblock %}
 {% block content %}
-{#    {% include "partial/search.html" %}#}
-    <h2>Задачи</h2>
+
+<p><h3>Задачи по проекту: {{project.name}}</h3>
     <div class="row">
-        {% for task in tasks %}
+        {% for project in project.taskss.all %}
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h3>{{ task.summary }} ({{ task.description}})</h3>
-                        <p><a href="{% url "task_view" task.pk%}">Подробнее о задаче</a></p>
+                        <h3>{{ project.summary }} ({{ project.description}})</h3>
+                        <p><a href="{% url "task_view" project.pk%}">Подробнее о задаче</a></p>
                     </div>
                 </div>
             </div>
         {% endfor %}
-    {% if is_paginated %}
-        {% include "partial/pagination.html" %}
-    {% endif %}
     </div>
-    <p></p>
+</p>
+
+<a href="{% url "p-view" %}">На главную проектов</a>
 {% endblock %}

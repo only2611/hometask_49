@@ -17,8 +17,6 @@
                     <div class="card-body">
                         <h3>{{ task.summary }} ({{ task.description}})</h3>
                         <p><a href="{% url "task_view" task.pk%}">Подробнее о задаче</a></p>
-{#                        <a class="btn btn btn-primary" href="{% url "update_note" pk=note.pk %}" role="button"><i class="fa fa-pencil"></i> Редактировать</a>#}
-{#                      <a class="btn btn btn-primary" href="{% url "delete" pk=note.pk %}" role="button"><i class="fa fa-trash"></i> Удалить</a>#}
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.utils.http import urlencode
 
 from django.views import View
-from django.views.generic import TemplateView, ListView, CreateView
+from django.views.generic import TemplateView, ListView, CreateView, UpdateView
 
 from trecker.forms import TaskForm, FindForm
 from trecker.models import Task, Project
@@ -15,7 +15,7 @@ class IndexView(ListView):
     template_name = "tasks/index.html"
     context_object_name = "tasks"
     ordering = ("-updated_at")
-    paginate_by = 5
+    paginate_by = 7
 
 
     def get(self, request, *args, **kwargs):
@@ -66,43 +66,24 @@ class CreateTaskView(CreateView):
     template_name = "tasks/create.html"
 
 
-    # def form_valid(self, form):
-    #     task = get_object_or_404(Task, pk=self.kwargs.get("pk"))
-    #     form.instance.task = task
-    #     return super().form_valid(form)
+    def form_valid(self, form):
+        project = get_object_or_404(Project, pk=self.kwargs.get("pk"))
+        form.instance.project = project
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse("project-view", kwargs={"pk": self.object.project.pk})
+
+
+class UpdateTask(UpdateView):
+    form_class = TaskForm
+    template_name = "tasks/update.html"
+    model = Task
 
 
     def get_success_url(self):
-        return reverse("index_view")
+        return reverse("task_view", kwargs={"pk": self.object.pk})
 
-
-class Update(View):
-    def dispatch(self, request, *args, **kwargs):
-        pk = kwargs.get("pk")
-        self.task = get_object_or_404(Task, pk=pk)
-        return super().dispatch(request, *args, **kwargs)
-
-    def get(self, request, *args, **kwargs):
-        if request.method == "GET":
-            form = TaskForm(initial={
-                "summary": self.task.summary,
-                "description": self.task.description,
-                "status": self.task.status,
-                "types": self.task.types.all(),
-                "project": self.task.project
-            })
-            return render(request, "tasks/update.html", {"form": form})
-    def post(self, request, *args, **kwargs):
-        form = TaskForm(data=request.POST)
-        if form.is_valid():
-            self.task.summary = form.cleaned_data.get("summary")
-            self.task.description = form.cleaned_data.get("description")
-            self.task.status = form.cleaned_data.get("status")
-            self.task.types.set(form.cleaned_data.get("types"))
-            self.task.project = form.cleaned_data.get("project")
-            self.task.save()
-            return redirect("index_view", )
-        return render(request, "tasks/update.html", {"form": form})
 
 
 
