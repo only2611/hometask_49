@@ -3,12 +3,13 @@ from django.urls import path
 
 
 from trecker.views import IndexView, TaskView, CreateProjectView, ProjectsView, \
-    CreateTaskView, ProjectView, UpdateTask, UpdateProject, DeleteTask, DeleteProject
+    CreateTaskView, ProjectView, UpdateTask, UpdateProject, DeleteTask, DeleteProject, CreateTaskView2
 
 urlpatterns = [
     path('tasks/', IndexView.as_view(), name="index_view"),
+    path('tasks/create', CreateTaskView2.as_view(), name="create2"),
     path('task/<int:pk>/', TaskView.as_view(), name="task_view"),
-    path('project/<int:pk>/createtask/', CreateTaskView.as_view(), name="create"),
+    path('project/<int:pk>/task/create', CreateTaskView.as_view(), name="create"),
     path('task/<int:pk>/update', UpdateTask.as_view(), name="update"),
     path('task/<int:pk>/delete', DeleteTask.as_view(), name="delete"),
     path('', ProjectsView.as_view(), name="p-view"),

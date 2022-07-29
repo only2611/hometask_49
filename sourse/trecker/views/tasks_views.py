@@ -6,7 +6,7 @@ from django.utils.http import urlencode
 
 from django.views.generic import TemplateView, ListView, CreateView, UpdateView, DeleteView
 
-from trecker.forms import TaskForm, FindForm
+from trecker.forms import TaskForm, FindForm, TaskForm2
 from trecker.models import Task, Project
 
 
@@ -72,9 +72,17 @@ class CreateTaskView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-       print(self.object)
        return reverse("project-view", kwargs={"pk": self.object.project.pk})
 
+
+class CreateTaskView2(CreateView):
+    model = Task
+    form_class = TaskForm2
+    template_name = "tasks/create.html"
+
+    def get_success_url(self):
+       # return reverse("project-view", kwargs={"pk": self.object.project.pk})
+        return reverse("index_view")
 
 
 class UpdateTask(UpdateView):
