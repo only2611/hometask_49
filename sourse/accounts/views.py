@@ -1,4 +1,4 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 
 
@@ -15,3 +15,9 @@ def login_view(request):
         else:
             context['has_error'] = True
     return render(request, 'login.html', context=context)
+
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('trecker:p-view')

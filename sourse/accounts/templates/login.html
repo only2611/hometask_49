@@ -4,7 +4,7 @@
 
     <h1>Вход</h1>
     <div class="text-center">
-    <form action="{% url 'accounts:login' %}" method="post" class="text-center w-50 ms-auto me-auto">
+    <form action="" method="post" class="text-center w-50 ms-auto me-auto">
         {% csrf_token %}
         {% if has_error %}
             <p class="text-danger">Неверное имя пользователя или пароль.</p>
@@ -17,7 +17,7 @@
             <label for="password" class="form-label">Пароль:</label>
             <input type="password" name="password" class="form-control" id="password">
         </div>
-        <button class="mt-3" type="submit">Войти</button>
+        <button class="mt-3 btn btn-outline-dark" type="submit">Войти</button>
     </form>
 </div>
 
