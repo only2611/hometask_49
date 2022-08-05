@@ -3,7 +3,7 @@
 {% block nav %}
 
     <li class="nav-item">
-        <a class="nav-link" href="{% url "create-view" %}"><h3>Создание проекта</h3></a>
+        <a class="nav-link" href="{% url "trecker:create-view" %}"><h3>Создание проекта</h3></a>
     </li>
 
 {% endblock %}
@@ -26,5 +26,5 @@
     {% endif %}
     </div>
     <p></p>
-<a href="{% url "index_view" %}">На главную задач</a>
+<a href="{% url "trecker:index_view" %}">На главную задач</a>
 {% endblock %}

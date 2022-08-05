@@ -5,6 +5,8 @@ from django.urls import path
 from trecker.views import IndexView, TaskView, CreateProjectView, ProjectsView, \
     CreateTaskView, ProjectView, UpdateTask, UpdateProject, DeleteTask, DeleteProject, CreateTaskView2
 
+app_name = "trecker"
+
 urlpatterns = [
     path('tasks/', IndexView.as_view(), name="index_view"),
     path('tasks/create', CreateTaskView2.as_view(), name="create2"),

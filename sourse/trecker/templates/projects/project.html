@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block nav %}
-        <a class="nav-link" href="{% url "create" project.pk%}">Создать задачку</a>
-        <a class="nav-link" href="{% url "p-update" project.pk %}">Редактировать проект</a>
-        <a class="nav-link" href="{% url "p-delete" project.pk %}">Удалить проект</a>
+        <a class="nav-link" href="{% url "trecker:create" project.pk%}">Создать задачку</a>
+        <a class="nav-link" href="{% url "trecker:p-update" project.pk %}">Редактировать проект</a>
+        <a class="nav-link" href="{% url "trecker:p-delete" project.pk %}">Удалить проект</a>
 {% endblock %}
 {% block content %}
 <p>project - {{ project.name }}</p>
@@ -19,7 +19,7 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <h3>{{ project.summary }} ({{ project.description}})</h3>
-                        <p><a href="{% url "task_view" project.pk%}">Подробнее о задаче</a></p>
+                        <p><a href="{% url "trecker:task_view" project.pk%}">Подробнее о задаче</a></p>
                     </div>
                 </div>
             </div>
@@ -27,5 +27,5 @@
     </div>
 </p>
 
-<a href="{% url "p-view" %}">На главную проектов</a>
+<a href="{% url "trecker:p-view" %}">На главную проектов</a>
 {% endblock %}

@@ -72,7 +72,7 @@ class CreateTaskView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-       return reverse("project-view", kwargs={"pk": self.object.project.pk})
+       return reverse("trecker:project-view", kwargs={"pk": self.object.project.pk})
 
 
 class CreateTaskView2(CreateView):
@@ -82,7 +82,7 @@ class CreateTaskView2(CreateView):
 
     def get_success_url(self):
        # return reverse("project-view", kwargs={"pk": self.object.project.pk})
-        return reverse("index_view")
+        return reverse("trecker:index_view")
 
 
 class UpdateTask(UpdateView):
@@ -92,7 +92,7 @@ class UpdateTask(UpdateView):
 
 
     def get_success_url(self):
-        return reverse("task_view", kwargs={"pk": self.object.pk})
+        return reverse("trecker:task_view", kwargs={"pk": self.object.pk})
 
 
 
@@ -104,7 +104,7 @@ class DeleteTask(DeleteView):
         return super().delete(request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse("project-view", kwargs={"pk": self.object.project.pk})
+        return reverse("trecker:project-view", kwargs={"pk": self.object.project.pk})
 
 
 

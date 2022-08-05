@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block nav %}
-    <a class="nav-link" href="{% url "create2" %}">Create task</a>
-    <a class="nav-link" href="{% url "update" task.pk %}">Update task</a>
-    <a class="nav-link" href="{% url "delete" task.pk %}">Delete task</a>
+    <a class="nav-link" href="{% url "trecker:create2" %}">Create task</a>
+    <a class="nav-link" href="{% url "trecker:update" task.pk %}">Update task</a>
+    <a class="nav-link" href="{% url "trecker:delete" task.pk %}">Delete task</a>
 {% endblock %}
 {% block content %}
 <p>project - {{ task.project.name }}</p>
@@ -19,7 +19,7 @@
     <p>data_of_create - {{ task.created_at }}</p>
     <p>data_of_update - {{ task.updated_at }}</p>
 
-<a href="{% url "index_view" %}">На главную задач</a>
+<a href="{% url "trecker:index_view" %}">На главную задач</a>
     <p></p>
-    <a href="{% url "p-view" %}">На главную проектов</a>
+    <a href="{% url "trecker:p-view" %}">На главную проектов</a>
 {% endblock %}

@@ -9,7 +9,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container">
-    <a class="navbar-brand" href="{% url "p-view" %}"><h2>Home</h2></a>
+    <a class="navbar-brand" href="{% url "trecker:p-view" %}"><h2>Home</h2></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,6 +18,18 @@
           {% block nav %}
 
           {% endblock %}
+      {% if request.user.is_authenticated %}
+           <li class="nav-item">
+        <a class="nav-link" href="#"><h3>Выйти</h3></a>
+    </li>
+          <li class="nav-item">
+        <p>Hello {{ user.username }}</p>
+    </li>
+      {% else %}
+       <li class="nav-item">
+        <a class="nav-link" href="{% url "accounts:login" %}"><h3>Войти</h3></a>
+    </li>
+      {% endif %}
       </div>
     </div>
   </div>

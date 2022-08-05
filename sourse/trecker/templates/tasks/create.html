@@ -4,8 +4,8 @@
 <form action="" method="post">
     {% include "partial/form.html" with button_text="Create"%}
 <p></p>
-<a href="{% url "index_view" %}">На главную задач</a>
+<a href="{% url "trecker:index_view" %}">На главную задач</a>
 <p></p>
-<a href="{% url "p-view" %}">На главную проектов</a>
+<a href="{% url "trecker:p-view" %}">На главную проектов</a>
 </form>
 {% endblock %}

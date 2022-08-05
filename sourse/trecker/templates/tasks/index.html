@@ -3,7 +3,7 @@
 {% block nav %}
 
     <li class="nav-item">
-        <a class="nav-link" href="{% url "create2" %}"><h3>Создание задачи</h3></a>
+        <a class="nav-link" href="{% url "trecker:create2" %}"><h3>Создание задачи</h3></a>
     </li>
 
 {% endblock %}
@@ -16,7 +16,7 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <h3>{{ task.summary }} ({{ task.description}})</h3>
-                        <p><a href="{% url "task_view" task.pk%}">Подробнее о задаче</a></p>
+                        <p><a href="{% url "trecker:task_view" task.pk%}">Подробнее о задаче</a></p>
                     </div>
                 </div>
             </div>
@@ -26,5 +26,5 @@
     {% endif %}
     </div>
     <p></p>
-    <a href="{% url "p-view" %}">На главную проектов</a>
+    <a href="{% url "trecker:p-view" %}">На главную проектов</a>
 {% endblock %}

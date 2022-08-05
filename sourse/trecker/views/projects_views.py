@@ -50,7 +50,7 @@ class CreateProjectView(CreateView):
 
 
     def get_success_url(self):
-        return reverse("project-view", kwargs={"pk": self.object.pk})
+        return reverse("trecker:project-view", kwargs={"pk": self.object.pk})
 
 
 class ProjectView(DetailView):
@@ -66,10 +66,10 @@ class UpdateProject(UpdateView):
 
 
     def get_success_url(self):
-        return reverse("project-view", kwargs={"pk": self.object.pk})
+        return reverse("trecker:project-view", kwargs={"pk": self.object.pk})
 
 
 class DeleteProject(DeleteView):
     model = Project
     template_name = "projects/delete.html"
-    success_url = reverse_lazy("p-view")
+    success_url = reverse_lazy("trecker:p-view")
