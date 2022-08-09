@@ -4,7 +4,7 @@
 
     <h1>Вход</h1>
     <div class="text-center">
-    <form action="" method="post" class="text-center w-50 ms-auto me-auto">
+    <form  method="post" class="text-center w-50 ms-auto me-auto">
         {% csrf_token %}
         {% if has_error %}
             <p class="text-danger">Неверное имя пользователя или пароль.</p>
