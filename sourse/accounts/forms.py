@@ -17,7 +17,10 @@ class MyUserCreationForm(forms.ModelForm):
 
     password = forms.CharField(label="Пароль", strip=False, required=True, widget=forms.PasswordInput)
     password_confirm = forms.CharField(label="Подтвердите пароль", required=True, widget=forms.PasswordInput, strip=False)
-    email = forms.EmailField(label="Почта", required=True, )
+    email = forms.EmailField(label="Почта", required=True,)
+    # last_name = forms.CharField(label="Last_name", required=True,)
+    # first_name = forms.CharField(label="First_name", required=True, )
+
     class Meta:
         model = User
         fields = ['username', 'password', 'password_confirm', 'first_name', 'last_name', 'email']
@@ -37,7 +40,17 @@ class MyUserCreationForm(forms.ModelForm):
         cleaned_data = super().clean()
         password = cleaned_data.get('password')
         password_confirm = cleaned_data.get('password_confirm')
+        last_name = cleaned_data.get('last_name')
+        first_name = cleaned_data.get('first_name')
         if password != password_confirm:
             raise ValidationError('Пароли не совпадают')
+        if not last_name and not first_name:
+            raise ValidationError("Надо заполнить хоть одно поле: Last name или First name")
+        else:
+            return cleaned_data
+
+
+
+
 
 
