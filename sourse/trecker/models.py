@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
 # Create your models here.
@@ -23,8 +24,9 @@ class Task(BaseModel):
                                  verbose_name="Проект", default=1)
 
 
+
     def __str__(self):
-        return f"{self.id}.{self.summary} - {self.description}"
+        return f"{self.id}.{self.summary} - {self.description} {self.users}"
 
     # def get_absolute_url(self):
     #     return reverse("project-view", kwargs={"pk": self.pk})
@@ -66,10 +68,12 @@ class Project(models.Model):
     description = models.TextField(max_length=500, verbose_name="Описание проекта")
     start_date = models.DateField(verbose_name="Дата начала")
     finish_date = models.DateField(null=True, blank=True, verbose_name="Дата завершения")
+    users = models.ManyToManyField(get_user_model(), related_name="projects",default=1,
+                                   verbose_name="Пользователь")
 
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.name}. {self.users}"
 
     def get_absolute_url(self):
         return reverse("trecker:project-view", kwargs={"pk": self.pk})

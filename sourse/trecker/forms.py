@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.forms import widgets
 
@@ -44,3 +45,13 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ['name', 'description', 'start_date', 'finish_date']
+
+
+class UseradddelForm(forms.ModelForm):
+
+    class Meta:
+        model = Project
+        fields = ['users']
+        widgets = {
+            "users": widgets.CheckboxSelectMultiple
+        }

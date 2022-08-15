@@ -5,9 +5,15 @@
         <a class="nav-link" href="{% url "trecker:create" project.pk%}">Создать задачку</a>
         <a class="nav-link" href="{% url "trecker:p-update" project.pk %}">Редактировать проект</a>
         <a class="nav-link" href="{% url "trecker:p-delete" project.pk %}">Удалить проект</a>
+        <a class="nav-link" href="{% url "trecker:add_user" project.pk %}">add/delete user</a>
     {% endif %}
 {% endblock %}
 {% block content %}
+    <p>Пользователи проекта:
+    {%  for user in project.users.all %}
+        <h4>{{ user.username }}</h4>
+    {% endfor %}
+    </p>
 <p>project - {{ project.name }}</p>
 <p>description - {{ project.description }}</p>
     <p>дата начала проекта - {{ project.start_date }}</p>
