@@ -14,7 +14,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
+      <div class="navbar-nav mt-2">
           {% block nav %}
 
           {% endblock %}
@@ -23,7 +23,7 @@
         <a class="nav-link" href="{% url "accounts:logout" %}"><h3>Выйти</h3></a>
     </li>
           <li class="nav-item">
-        <p>Hello {{ user.username }}</p>
+        <p class="nav-link">Hello <a href="{% url "accounts:profile" request.user.pk %}">{{ user.username }}</a></p>
     </li>
       {% else %}
        <li class="nav-item">

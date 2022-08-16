@@ -9,22 +9,6 @@
 {% endblock %}
 {% block content %}
 {% include "partial/search.html" %}
-    <h2>Проекты</h2>
-    <div class="row">
-        {% for project in projects %}
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h3>{{ project.name }} ({{ project.description}})</h3>
-                        <p><a href="{{ project.get_absolute_url }}">Подробнее о проекте</a></p>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    {% if is_paginated %}
-        {% include "partial/pagination.html" %}
-    {% endif %}
-    </div>
-    <p></p>
+    {% include "partial/the_list.html" %}
 <a href="{% url "trecker:index_view" %}">На главную задач</a>
 {% endblock %}
