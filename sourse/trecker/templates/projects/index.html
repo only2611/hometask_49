@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block nav %}
-{% if request.user.is_authenticated %}
+{% if request.user.is_authenticated and perms.trecker.add_project%}
     <li class="nav-item">
         <a class="nav-link" href="{% url "trecker:create-view" %}"><h3>Создание проекта</h3></a>
     </li>

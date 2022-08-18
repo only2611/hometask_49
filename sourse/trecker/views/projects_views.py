@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.shortcuts import redirect, get_object_or_404, render
@@ -65,37 +65,54 @@ class AddUserView(UpdateView):
         return reverse("trecker:project-view", kwargs={"pk": self.object.pk})
 
 
-class CreateProjectView(LoginRequiredMixin, CreateView):
+class CreateProjectView(PermissionRequiredMixin, CreateView):
     form_class = ProjectForm
     template_name = "projects/new-project.html"
+    permission_required = "trecker.add_project"
+
+    # def form_valid(self, form):
+    #     user = self.request.user
+    #     form.instance.author = user
+    #     return super().form_valid(form)
 
     def form_valid(self, form):
-        user = self.request.user
-        form.instance.author = user
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        self.object.users.add(self.request.user)
+        return response
 
+    # def has_permission(self):
+    #     return super().has_permission() or self.get_object().author == self.request.user
 
     def get_success_url(self):
         return reverse("trecker:project-view", kwargs={"pk": self.object.pk})
 
 
-class ProjectView( DetailView):
+class ProjectView(LoginRequiredMixin, DetailView):
     template_name = "projects/project.html"
     model = Project
 
 
 
-class UpdateProject(LoginRequiredMixin, UpdateView):
+
+class UpdateProject(PermissionRequiredMixin, UpdateView):
     form_class = ProjectForm
     template_name = "projects/update_project.html"
     model = Project
+    permission_required = "trecker.change_project"
+
+    def has_permission(self):
+        return super().has_permission() or self.get_object().users == self.request.user
 
 
     def get_success_url(self):
         return reverse("trecker:project-view", kwargs={"pk": self.object.pk})
 
 
-class DeleteProject(LoginRequiredMixin, DeleteView):
+class DeleteProject(PermissionRequiredMixin, DeleteView):
     model = Project
     template_name = "projects/delete.html"
     success_url = reverse_lazy("trecker:p-view")
+    permission_required = "trecker.delete_project"
+
+    def has_permission(self):
+        return super().has_permission() or self.get_object().users == self.request.user

@@ -7,9 +7,9 @@
     {% endif %}
         <div class="card-body ms-5">
             <h5 class="card-title mb-3" >{{ user.username }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted mb-3">Дата рождения: {{ user.profile.birthday }}</h6>
-            <h6 class="card-subtitle mb-2 text-muted mb-3">Аккаунт на гитхаб: <a href="">{{ user.profile.git_link }}</a></h6>
-            <h6 class="card-subtitle mb-2 text-muted mb-3">О себе: {{ user.profile.yourself }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted mb-3">Дата рождения: {{ user.profile.birthday|default:"нет данных" }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted mb-3">Аккаунт на гитхаб: <a href="">{{ user.profile.git_link|default:"нет данных" }}</a></h6>
+            <h6 class="card-subtitle mb-2 text-muted mb-3">О себе: {{ user.profile.yourself|default:"нет данных" }}</h6>
         </div>
     </div>
  {% include "partial/the_list.html" %}

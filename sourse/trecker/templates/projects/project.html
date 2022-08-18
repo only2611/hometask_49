@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block nav %}
-    {% if request.user.is_authenticated %}
+    {% if request.user.is_authenticated  %}
         <a class="nav-link" href="{% url "trecker:create" project.pk%}">Создать задачку</a>
+    {% endif %}
+    {% if request.user.is_authenticated and perms.trecker.change_project and perms.trecker.delete_project%}
         <a class="nav-link" href="{% url "trecker:p-update" project.pk %}">Редактировать проект</a>
         <a class="nav-link" href="{% url "trecker:p-delete" project.pk %}">Удалить проект</a>
         <a class="nav-link" href="{% url "trecker:add_user" project.pk %}">add/delete user</a>
