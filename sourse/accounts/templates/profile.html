@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Профиль {% endblock %}
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'accounts:edit_profile'%}">Edit profile</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'accounts:change_password'%}">Change password</a>
+    </li>
+{% endblock %}
 {% block content %}
     <div class="card flex-row mt-3">
     {% if user.profile.avatar %}
@@ -7,6 +15,8 @@
     {% endif %}
         <div class="card-body ms-5">
             <h5 class="card-title mb-3" >{{ user.username }}</h5>
+             <h6 class="card-subtitle mb-2 text-muted mb-3">Имя: {{ user.first_name|default:"нет данных" }}</h6>
+             <h6 class="card-subtitle mb-2 text-muted mb-3">Фамилия: {{ user.last_name|default:"нет данных" }}</h6>
             <h6 class="card-subtitle mb-2 text-muted mb-3">Дата рождения: {{ user.profile.birthday|default:"нет данных" }}</h6>
             <h6 class="card-subtitle mb-2 text-muted mb-3">Аккаунт на гитхаб: <a href="">{{ user.profile.git_link|default:"нет данных" }}</a></h6>
             <h6 class="card-subtitle mb-2 text-muted mb-3">О себе: {{ user.profile.yourself|default:"нет данных" }}</h6>
