@@ -8,7 +8,10 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <h3>{{ project.name }} ({{ project.description}})</h3>
+                        {% if perms.trecker.view_project and user in project.users.all %}
                         <p><a href="{{ project.get_absolute_url }}">Подробнее о проекте</a></p>
+                            <p><a href="{% url "trecker:add_user" project.pk %}">add/delete user</a></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

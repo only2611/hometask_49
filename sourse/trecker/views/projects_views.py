@@ -50,16 +50,26 @@ class ProjectsView(ListView):
 
 
 
-class AddUserView(UpdateView):
+class AddUserView(PermissionRequiredMixin, UpdateView):
     form_class = UseradddelForm
     template_name = "projects/new_user.html"
     model = Project
+    permission_required = "trecker.add_users_to_projects"
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['pk'] = self.request.user.pk
+        return kwargs
+
 
     def form_valid(self, form):
-        user = self.request.user
-        form.instance.author = user
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        self.object.users.add(self.request.user)
+        return response
 
+
+    def has_permission(self):
+        return super().has_permission() or self.request.user in self.get_object().users.all()
 
     def get_success_url(self):
         return reverse("trecker:project-view", kwargs={"pk": self.object.pk})
@@ -87,9 +97,14 @@ class CreateProjectView(PermissionRequiredMixin, CreateView):
         return reverse("trecker:project-view", kwargs={"pk": self.object.pk})
 
 
-class ProjectView(LoginRequiredMixin, DetailView):
+class ProjectView(PermissionRequiredMixin, DetailView):
     template_name = "projects/project.html"
     model = Project
+    permission_required = "trecker.view_project"
+
+    def has_permission(self):
+        return super().has_permission() or self.request.user in self.get_object().users.all()
+
 
 
 
